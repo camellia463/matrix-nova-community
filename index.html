@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>欢迎来到 Matrix Nova 社群</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c2333;
+    --ink-soft: #4a5468;
+    --brand: #1f3864;
+    --brand-deep: #142442;
+    --accent: #3d6bc6;
+    --lav: #eeedfa;
+    --blue-50: #eaf1fc;
+    --line: #dfe4ee;
+    --bg: #f7f8fb;
+    --card: #ffffff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.85;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+  .serif { font-family: "Playfair Display", "Songti SC", Georgia, serif; }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    align-items: flex-end;
+    background:
+      linear-gradient(180deg, rgba(15,25,50,.34) 0%, rgba(15,25,50,.62) 62%, rgba(15,25,50,.88) 100%),
+      #142442 url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2070&auto=format&fit=crop") center / cover no-repeat;
+    color: #fff;
+  }
+  .hero-inner {
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 28px 64px;
+  }
+  .hero .eyebrow {
+    font-size: 13px;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    opacity: .82;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(30px, 6vw, 44px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: .02em;
+  }
+  .hero .slogan-label {
+    margin-top: 30px;
+    font-size: 11px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    opacity: .62;
+  }
+  .hero .slogan {
+    margin-top: 8px;
+    font-size: clamp(15px, 2.6vw, 18px);
+    opacity: .9;
+    letter-spacing: .12em;
+  }
+  .hero .slogan b { font-weight: 600; }
+  .hero-rule {
+    width: 56px; height: 2px; background: #8fb3ef;
+    margin: 26px 0 0; border: none;
+  }
+
+  /* ===== Body ===== */
+  main { max-width: 760px; margin: 0 auto; padding: 8px 28px 72px; }
+
+  .lead {
+    margin: 40px 0 8px;
+    font-size: 17.5px;
+    color: var(--ink);
+  }
+
+  section { margin-top: 56px; }
+  .kicker {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 6px;
+  }
+  .kicker .no {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 13px; color: var(--accent);
+    letter-spacing: .18em;
+  }
+  .kicker::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--brand);
+    line-height: 1.45;
+    margin-bottom: 18px;
+    letter-spacing: .01em;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--brand);
+    margin: 26px 0 8px;
+  }
+  p + p { margin-top: 14px; }
+  p { color: var(--ink); }
+  .soft { color: var(--ink-soft); }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin-top: 16px;
+  }
+  .tint-blue { background: var(--blue-50); border-color: #d4e2f7; }
+  .tint-lav  { background: var(--lav);  border-color: #dedbf2; }
+
+  ul.clean { list-style: none; }
+  ul.clean li {
+    position: relative;
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+  ul.clean li::before {
+    content: "";
+    position: absolute; left: 2px; top: .78em;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); opacity: .75;
+  }
+  ul.clean li b { font-weight: 600; }
+
+  .duo { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 640px) { .duo { grid-template-columns: 1fr 1fr; } }
+  .duo .tag {
+    font-size: 13px; letter-spacing: .2em;
+    color: var(--accent); margin-bottom: 8px; font-weight: 600;
+  }
+
+  /* timeline */
+  .timeline { margin-top: 18px; border-left: 2px solid #cdd9ef; padding-left: 22px; }
+  .timeline .t-item { position: relative; padding-bottom: 22px; }
+  .timeline .t-item:last-child { padding-bottom: 4px; }
+  .timeline .t-item::before {
+    content: ""; position: absolute; left: -28px; top: .55em;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: #fff; border: 3px solid var(--accent);
+  }
+  .timeline .t-label {
+    font-size: 13px; letter-spacing: .16em;
+    color: var(--accent); font-weight: 600; margin-bottom: 2px;
+  }
+  .timeline .t-body { color: var(--ink); }
+
+  /* members */
+  .member { border-top: 1px solid var(--line); padding: 20px 0; }
+  .member:first-of-type { border-top: none; }
+  .member .name-line {
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .member .name { font-size: 18px; font-weight: 700; color: var(--brand); }
+  .member .en { font-size: 13.5px; color: var(--accent); letter-spacing: .08em; }
+  .member .role { font-size: 13px; color: #fff; background: var(--brand); border-radius: 999px; padding: 2px 12px; }
+  .member p { font-size: 15.5px; color: var(--ink-soft); }
+
+  /* quote */
+  .quote {
+    margin: 22px 0 0; padding: 22px 26px;
+    background: linear-gradient(135deg, var(--brand-deep), #274a86);
+    border-radius: 14px; color: #fff;
+  }
+  .quote .q-text { font-size: 16.5px; line-height: 1.9; }
+  .quote .q-src { margin-top: 10px; font-size: 13px; opacity: .72; letter-spacing: .1em; }
+
+  /* ===== full-bleed color bands ===== */
+  .band {
+    margin: 64px calc(50% - 50vw) 0;
+    padding: 54px 28px;
+    text-align: center;
+  }
+  .band-dark {
+    background:
+      linear-gradient(180deg, rgba(15,25,50,.66) 0%, rgba(15,25,50,.78) 100%),
+      #142442 url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2070&auto=format&fit=crop") center / cover no-repeat;
+    color: #fff;
+  }
+  .band-dark .b-label {
+    font-size: 11.5px; letter-spacing: .42em; text-transform: uppercase;
+    opacity: .68; margin-bottom: 18px;
+  }
+  .band-dark .b-slogan {
+    font-family: "Playfair Display", "Songti SC", Georgia, serif;
+    font-size: clamp(22px, 4.6vw, 32px);
+    font-weight: 600; letter-spacing: .06em; line-height: 1.55;
+  }
+  .band-dark .b-slogan em { font-style: normal; color: #9dbcf2; }
+  .band-dark .b-sub {
+    margin-top: 16px; font-size: 12.5px; opacity: .62; letter-spacing: .2em;
+  }
+  /* ===== CTA band: big image + marquee ===== */
+  .cta-band {
+    position: relative;
+    margin: 64px calc(50% - 50vw) 0;
+    text-align: center; color: #fff; overflow: hidden;
+    background: #142442 url("https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80&w=2070&auto=format&fit=crop") center / cover no-repeat;
+  }
+  .cta-band::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(15,25,50,.52) 0%, rgba(15,25,50,.66) 60%, rgba(13,22,44,.88) 100%);
+  }
+  .cta-inner { position: relative; padding: 76px 28px 68px; }
+  .cta-inner .b-label {
+    font-size: 11.5px; letter-spacing: .42em; text-transform: uppercase;
+    opacity: .7; margin-bottom: 16px;
+  }
+  .cta-title {
+    font-family: "Playfair Display", "Songti SC", Georgia, serif;
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 600; letter-spacing: .05em; margin-bottom: 26px;
+  }
+
+  .band-pills { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .band-pills span {
+    background: transparent; border: none; color: #fff;
+    border-radius: 999px; padding: 8px 12px; font-size: 14.5px; font-weight: 600;
+  }
+  .band-pills span.heart { color: #f2b3c6; }
+
+  .marquee {
+    position: relative;
+    background: rgba(10,18,38,.82);
+    border-top: 1px solid rgba(143,179,239,.28);
+    padding: 14px 0; overflow: hidden;
+  }
+  .marquee-track {
+    display: flex; width: max-content;
+    animation: marquee 26s linear infinite;
+  }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-track span {
+    white-space: nowrap;
+    font-size: 13.5px; letter-spacing: .24em; opacity: .85;
+  }
+  .marquee-track .dot { color: #8fb3ef; margin: 0 18px; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ===== interactive UI ===== */
+  .progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0;
+    background: linear-gradient(90deg, #3d6bc6, #8fb3ef);
+    z-index: 100; transition: width .1s linear;
+  }
+  .toast { display: none; }
+  .to-top {
+    position: fixed; right: 22px; bottom: 28px;
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid #d4e2f7; background: #fff; color: var(--brand);
+    font-size: 17px; cursor: pointer;
+    box-shadow: 0 8px 22px rgba(20,36,66,.16);
+    opacity: 0; pointer-events: none; transition: .25s ease; z-index: 98;
+  }
+  .to-top.show { opacity: 1; pointer-events: auto; }
+  .to-top:hover { transform: translateY(-3px); }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .card, .band-pills span { transition: transform .2s ease, box-shadow .2s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(20,36,66,.10); }
+  .band-pills span:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(20,36,66,.12); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  footer {
+    margin-top: 72px; padding: 26px 0 10px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  footer .brand {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 15px; color: var(--brand); letter-spacing: .06em; font-weight: 600;
+  }
+  footer .meta { font-size: 12.5px; color: #9aa3b5; }
+
+  .heart { color: #c2506d; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">MATRIX NOVA · COMMUNITY</div>
+    <h1>欢迎来到<br>Matrix Nova 社群</h1>
+    <div class="slogan-label">官方 Slogan</div>
+    <div class="slogan">因<b>链接</b>而学习，因<b>学习</b>而创造</div>
+    <hr class="hero-rule">
+  </div>
+</header>
+
+<main>
+  <p class="lead">欢迎大家来到 Matrix Nova。这篇文章将帮助你在加入之初了解几件事：我们身处的背景、我们是谁、这个群聊做什么、Matrix Nova 这家公司做什么。全文三分钟读完。</p>
+
+  <!-- 01 背景 -->
+  <section id="background">
+    <div class="kicker"><span class="no">01</span></div>
+    <h2>背景：为什么是现在</h2>
+    <p>AI 能力的爆发，正在重新定义「学习」这件事。知识获取的门槛被前所未有地拉平——一个人加上 AI，可以完成过去需要一个团队才能完成的事；学习的速度与深度，第一次更多取决于方法，而不是资源。</p>
+    <p>但现实是：大多数学生、家长和职场人知道 AI 重要，却不知道从哪里开始。市面上的信息又碎又杂，真正可上手、可验证的方法很少。观望的人在等一个「学会了的答案」，而答案只有在动手里才会出现。</p>
+    <p>黑客松（hackathon，限时极限开发比赛）给出了另一种可能：一群人、有限的时间、把想法做成作品。学习最好的验证方式，就是创造。</p>
+    <div class="quote">
+      <div class="q-text">「用 AI 学习、用 AI 创造的力量被严重低估，而真正掌握它的人还太少。」</div>
+    </div>
+  </section>
+
+  <!-- 02 我们是谁 -->
+  <section id="who">
+    <div class="kicker"><span class="no">02</span></div>
+    <h2>先自我介绍：Matrix Nova 是谁</h2>
+    <p>Matrix Nova 是一支平均年龄 16.5 岁的四人团队，来自成都，2026 年 8 月正式成立。</p>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-label">起点</div>
+        <div class="t-body">我们就是靠 AI 自学成长起来的一代学生。</div>
+      </div>
+      <div class="t-item">
+        <div class="t-label">2026 · 关键事件</div>
+        <div class="t-body">发起人李泽参加了成都 OFFMAP-X 黑客松（hackathon，72 小时极限开发比赛）并夺得冠军；赛后，他召集了另外三位伙伴正式组队——他们也在这场比赛中获奖。</div>
+      </div>
+      <div class="t-item">
+        <div class="t-label">判断</div>
+        <div class="t-body">用 AI 学习、用 AI 创造的力量被严重低估，而真正掌握它的人还太少。</div>
+      </div>
+      <div class="t-item">
+        <div class="t-label">行动</div>
+        <div class="t-body">于是有了 Matrix Nova——一支 AI 原生（AI Native）的团队。四位成员都是 AI 原住民：在 AI 时代成长，用 AI 学习、用 AI 工作、用 AI 创造。对我们而言，AI 并不神秘，也不遥远，它是这个时代人人都可以拿起的工具。</div>
+      </div>
+      <div class="t-item">
+        <div class="t-label">迈出第一步</div>
+        <div class="t-body">我们决定：不等机会，自己创造机会。「学客松」由此而来——一场面向所有人的学习黑客松：不比谁代码写得多，比谁学得快、用 AI 创造得出东西。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- slogan band -->
+  <div class="band band-dark">
+    <div class="b-slogan">因<em>链接</em>而学习，因<em>学习</em>而创造</div>
+    <div class="b-sub">LINK TO LEARN · LEARN TO CREATE</div>
+  </div>
+
+  <!-- 03 公司和群聊 -->
+  <section id="dual">
+    <div class="kicker"><span class="no">03</span></div>
+    <h2>公司和群聊，分别是干嘛的</h2>
+    <div class="duo">
+      <div class="card tint-blue">
+        <div class="tag">公司 · 造东西</div>
+        <ul class="clean">
+          <li><b>办学客松</b>，把它做成能去更多城市、进更多学校的常态化活动；</li>
+          <li><b>做学习类产品</b>：团队已经独立做出四个完整的产品；</li>
+          <li><b>推动「自学 × AI」</b>，让更多普通人发现：AI 时代，自学 + 创造是每个普通人都拿得起的武器。</li>
+        </ul>
+      </div>
+      <div class="card tint-lav">
+        <div class="tag">群聊 · 链接人</div>
+        <ul class="clean">
+          <li><b>AI 交流 &amp; 技术交流</b>：聊工具、聊用法、聊项目，什么水平的话题都有；</li>
+          <li><b>黑客松信息</b>：全国各地靠谱的黑客松资讯，我们先筛选再发布；</li>
+          <li><b>学客松动态</b>：活动的最新计划第一时间在这里同步，报名与志愿者招募也都在群里进行；</li>
+          <li><b>高密度信息</b>：这里不灌水，群友分享的东西大多值得认真看。</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16px"><b>一句话：公司负责把事情干出来，群负责把人链接起来。</b></p>
+  </section>
+
+  <!-- 04 学客松 -->
+  <section id="xks">
+    <div class="kicker"><span class="no">04</span></div>
+    <h2>我们办过的事：全国首届学客松（成都场）</h2>
+    <p>2026 年 10 月 1 日，我们把「学客松」从想法变成了现实——全国首届，成都落地，办了一整天。</p>
+    <p>现场是这样的：上午，我们的主讲师从零开始讲 AI——它是什么、怎么用、零基础怎么上手；下午，选手们现场动手，做出了属于自己的作品，还站上台路演分享；最后，大家分享了自己在学客松的收获，在签名墙前合了影。</p>
+    <p>现场来的是中学生、大学生，也有已经工作的从业者。许多人是第一次亲眼看到「一个想法如何长成一件作品」。散场时，不断有人问：下一场什么时候办？</p>
+    <p>除了学客松，我们还入选了 CNCC 2026（中国计算机大会）成都大会 AI 市集，是互动展区 20 个公益摊位之一；也与万物友灵、TGO 鲲鹏会·成都达成了合作。</p>
+  </section>
+
+  <!-- 05 主创成员 -->
+  <section id="team">
+    <div class="kicker"><span class="no">05</span></div>
+    <h2>主创成员</h2>
+    <div class="card" style="padding:6px 26px;">
+      <div class="member">
+        <div class="name-line"><span class="name">李泽</span><span class="en">Apollo</span><span class="role">创始人 · CEO</span></div>
+        <p>16 岁，高二，OFFMAP-X 2026 成都黑客松冠军。负责整体战略与对外合作，也是社群里讨论 AI 最活跃的人；首届学客松的海报、签名墙与物料视觉也大多出自他手。团队的新动作，多半由他发起。</p>
+      </div>
+      <div class="member">
+        <div class="name-line"><span class="name">罗佳晨</span><span class="en">Times</span><span class="role">CEO（首席执行官）</span></div>
+        <p>执行落地的统筹者：首届学客松的现场勘察与落地由他负责，是团队里最稳的一环。</p>
+      </div>
+      <div class="member">
+        <div class="name-line"><span class="name">凌晨</span><span class="en">Thomas</span><span class="role">CTO（首席技术官）</span></div>
+        <p>技术负责人，首届学客松的主讲师——台上把 AI 讲明白的人就是他。日常负责产品开发，社群里解决不了的技术问题可以直接找他。</p>
+      </div>
+      <div class="member">
+        <div class="name-line"><span class="name">Coco</span><span class="en">Yike</span><span class="role">首席策划师</span></div>
+        <p>公众号主笔，首届活动的现场策划负责人。社群的活动通知与公众号文章，都出自这份笔下。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 在群里 -->
+  <section id="join">
+    <div class="kicker"><span class="no">06</span></div>
+    <h2>在群里你可以做什么</h2>
+    <div class="card">
+      <ul class="clean">
+        <li><b>自由提问</b>：零基础的问题也完全可以问，这里没有「必须是高手才能发言」的规矩，任何问题都不会被笑话；</li>
+        <li><b>分享好东西</b>：工具、文章、比赛信息，你的分享可能正好帮到别人；</li>
+        <li><b>报名学客松</b>：想成为选手、志愿者或分享嘉宾，在群里报名即可；</li>
+        <li><b>邀请朋友</b>：不限年龄、不要求基础，对 AI 感兴趣就行。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA band: big image + marquee -->
+  <div class="cta-band" id="cta">
+    <div class="cta-inner">
+      <div class="b-label">Join Us · 加入我们</div>
+      <div class="cta-title">这里欢迎每一个人</div>
+      <div class="band-pills">
+        <span>零基础可加入</span>
+        <span>不限年龄</span>
+        <span>对 AI 感兴趣就行</span>
+        <span class="heart">有爱</span>
+      </div>
+    </div>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>因链接而学习<i class="dot">✦</i>因学习而创造<i class="dot">✦</i>LINK TO LEARN<i class="dot">✦</i>LEARN TO CREATE<i class="dot">✦</i>MATRIX NOVA<i class="dot">✦</i>学客松<i class="dot">✦</i>AI 原生社区<i class="dot">✦</i>有爱<i class="dot">✦</i></span><span>因链接而学习<i class="dot">✦</i>因学习而创造<i class="dot">✦</i>LINK TO LEARN<i class="dot">✦</i>LEARN TO CREATE<i class="dot">✦</i>MATRIX NOVA<i class="dot">✦</i>学客松<i class="dot">✦</i>AI 原生社区<i class="dot">✦</i>有爱<i class="dot">✦</i></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 转给身边的人 -->
+  <section id="invite">
+    <div class="kicker"><span class="no">07</span></div>
+    <h2>欢迎把这篇文章转给你身边的人</h2>
+    <p>你的亲友、老师、学生、同学——只要对 AI 感兴趣，都欢迎邀请加入。不必担心零基础，我们自己也是从零开始，一路摸索过来的。</p>
+    <p>这个群一直秉持的态度，就两个字：<b class="heart">有爱</b>。</p>
+    <p>来了就是伙伴。欢迎进群后先做个自我介绍，大家都期待认识你。</p>
+  </section>
+
+  <footer>
+    <span class="brand">Matrix Nova</span>
+    <span class="meta">因链接而学习，因学习而创造 · 2026 · 成都</span>
+  </footer>
+</main>
+
+<div class="progress" aria-hidden="true"></div>
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* 回到顶部 + 滚动进度条 */
+  var toTop = document.getElementById("toTop");
+  var bar = document.querySelector(".progress");
+  window.addEventListener("scroll", function () {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+    toTop.classList.toggle("show", h.scrollTop > 600);
+  }, { passive: true });
+  toTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  });
+
+  /* 滚动渐显 */
+  if (!reduce && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll("main > section, .cta-band").forEach(function (el) {
+      el.classList.add("reveal");
+      io.observe(el);
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
